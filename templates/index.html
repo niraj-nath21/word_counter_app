@@ -8,10 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <h2>Word & Character Counter</h2>
+        <h2>{{feature.name}}</h2>
+        <p class="description">{{feature.details}}</p>
         <form method="POST" action="/counter/">
             {% csrf_token %}
-            <textarea name="text" placeholder="Enter your text here...">{{ text }}</textarea><br>
+            <textarea name="text" placeholder="{{feature.text_area}}">{{ text }}</textarea><br>
             <button type="submit">Count</button>
         </form>
 
