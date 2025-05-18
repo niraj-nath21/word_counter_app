@@ -5,12 +5,12 @@ from .models import features
 # Create your views here.
 
 def index(request):
-    feature1 = features()
-    feature1.id = 1
-    feature1.name = "Word Counter App"
-    feature1.details = "This is a word counter app that counts the number of word in a given text."
-    feature1.text_area = "Enter your text here...."
-    return render(request, 'index.html', {'feature': feature1}) 
+    feature_DB = features.objects.first() # So the models is connected to database and we imported the models here so we are able to access the database.
+# So here we are getting the first object from the features table in the DB. Now if we get all() then we'll have to loop through the objects to be able to use the .name and other stuffs.
+# But rn there is only one object in the DB so no need to loop through the objects. And if we are using the loop for the frontend then better to loop in the HTML file.
+    return render(request, 'index.html', {'feature': feature_DB}) 
+
+
 
 def counter(request):
     texts = request.POST['text'] # Here the text is the name of the input field in the HTML form. So renaming the words variable to texts so there is differecnce between the two.
